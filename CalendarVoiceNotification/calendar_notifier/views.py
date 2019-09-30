@@ -12,11 +12,15 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from pydub import AudioSegment
 from pydub.playback import play
+from .tasks import sleepy, hello
+from datetime import datetime, timedelta
 
 # Create your views here.
 
 def index(request):
-    return HttpResponse("<h1>This is the calendar notifier homepage. </h1>")
+    sleepy.delay(10)
+    # delay = datetime.now() + timedelta(seconds=5)
+    return HttpResponse("<h1>Homepage.</h1>")
 
 def quickstart(request):
     # return HttpResponse("<h1>This is the quick start function. </h1>")
