@@ -21,7 +21,7 @@
 	</style>
 </head>
 <body>
-	<h2 align="center">Events for {{ today }}</h2>
+	<h2 align="center">Up comming events</h2>
 
 	<table>
 	  <tr>
@@ -36,6 +36,11 @@
 		  	<td>{{ event.end_time }}</td>
 		  	<td>{{ event.description }}</td>
 		  </tr>
+	  {% empty %} 
+	  	  <tr>
+		  	<td colspan="3" align="center">There are no new events.</td>
+		  </tr>
+
 	  {% endfor %}
 	</table>
 
