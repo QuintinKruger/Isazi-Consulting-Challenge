@@ -6,21 +6,25 @@ from pydub import AudioSegment
 from pydub.playback import play
 from gtts import gTTS
 from django.http import HttpResponse
+from celery.task import periodic_task
+from celery.schedules import crontab
 
-@shared_task
-def sleepy():
-	message = 'Five seconds have passed'
+@task(name='make_new_event_announcement')
+def make_new_event_announcement(description, start_time, end_time, participants):
+	message = '{} in the next 15 minutes - starting at {} and ending at {}. '.format(description, start_time, end_time)
+	participants_list = ''
 
-	tts = gTTS(message)
-	tts.save('test.mp3')
+	if len(participants) == 0:
+		announcement = message
+	else:
+		for i in range(len(participants)):
+			participants_list = participants_list + str(participants[i]) + ','
+		participants_list = participants_list + '.'
+		announcement = str(message)+ str('Those that will be attending are ') + str(participants_list)
 
-	sound = AudioSegment.from_mp3('test.mp3')
+	tts = gTTS(announcement)
+	tts.save('announcement.mp3')
+
+	sound = AudioSegment.from_mp3('announcement.mp3')
 	play(sound)
 
-	return os.getcwd()
-
-@task(name='hello')
-def hello(name):
-	message = 'Hello {}, the time now is {}'.format(name, datetime.now())
-	# return HttpResponse('<h1>' + str(message) + '</h1>')
-	return message

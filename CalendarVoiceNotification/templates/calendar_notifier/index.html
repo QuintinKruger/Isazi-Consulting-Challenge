@@ -4,8 +4,14 @@
 	<title>Isazi Consulting Challenge</title>
 </head>
 <body>
-	<h1>Homepage</h1>
-	<p>MUST LET THE USER SIGN INTO GOOGLE HERE FOR CALENDAR TO BE RENDERED</p>
+	<h1 align="center">Homepage</h1>
+	<p>The Django development server uses the HTTP protocol while the link that automatically sends the user to authrorize the use of the user's calendar uses HTTPS, the browser thus blocks access using this method. The alternative way to get the required token.pickle file for granting access to the user's google calendar is discussed below.</p>
+	<ol>
+	  <li>Navigate to <b>localhost:8000/calendar_notifier/get_calendar</b>.</li>
+	  <li>Navigate to the terminal where the the <b>python3 manage.py runserver</b> command was run.</li>
+	  <li>A link will be present in the terminal that must be opened and followed (look for the line that reads <b>Please visit this URL to authorize this application: ...</b>).</li>
+	  <li>The token.pickle file will be saved to the same directory as the <b>manage.py</b> and is then automatically used to give acess to the application.</li>
+	</ol>
 
 </body>
 </html>

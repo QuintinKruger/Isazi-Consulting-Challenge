@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'calendar_notifier.apps.CalendarNotifierConfig',
-    'google_auth'
+    'calendar_notifier.apps.CalendarNotifierConfig'
 ]
 
 MIDDLEWARE = [
@@ -126,5 +125,4 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6380'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Africa/Nairobi'
-
+CELERY_TIMEZONE = 'Africa/Johannesburg'
