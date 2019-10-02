@@ -55,7 +55,7 @@ ROOT_URLCONF = 'CalendarVoiceNotification.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-BROKER_URL = 'redis://localhost:6380'
+CELERY_BROKER_URL = 'redis://localhost:6380'
 CELERY_RESULT_BACKEND = 'redis://localhost:6380'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
