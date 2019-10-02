@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Today's Events</title>
+	<style type="text/css">
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td, th {
+		 	border: 1px solid #dddddd;
+		 	text-align: left;
+		 	padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		 	background-color: #dddddd;
+		}
+	</style>
+</head>
+<body>
+	<h2 align="center">Events for {{ today }}</h2>
+
+	<table>
+	  <tr>
+	    <th>Start Time</th>
+	    <th>End Time</th>
+	    <th> Description </th>
+	  </tr>
+
+	  {% for event in todays_events %}
+		  <tr>
+		  	<td>{{ event.start_time }}</td>
+		  	<td>{{ event.end_time }}</td>
+		  	<td>{{ event.description }}</td>
+		  </tr>
+	  {% endfor %}
+	</table>
+
+</body>
+</html>
